@@ -3,18 +3,12 @@ const filterSlice = createSlice({
   name: 'filter',
   initialState: '',
   reducers: {
-    setFilterValue(state, action) {
-      // или просто return action.payload ?
-      state.filter = action.payload;
-      // return action.payload;
+    setFilterValue(_, action) {
+      // Returned goes to state. Do not return result of mutated operation only!
+      return action.payload;
     },
   },
 });
 
-// ниже reducers или может непонятно почему reducer (как в конспекте)
 export const filterReducer = filterSlice.reducer;
-export const setFilterValue = filterSlice.actions;
-
-// const updateFilterInState = value => {
-//   // setFilter(value);
-// };
+export const { setFilterValue } = filterSlice.actions;

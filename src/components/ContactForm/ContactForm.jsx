@@ -9,7 +9,6 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addContact } from '../../redux/contactsSlice';
 
-// в пропсы приходили { addContact }
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -25,9 +24,7 @@ const ContactForm = () => {
       color="#ffee7d"
       onSubmit={e => {
         e.preventDefault();
-
         dispatch(addContact({ name, number }));
-        // addContact({ name, number });
         setName('');
         setNumber('');
       }}
