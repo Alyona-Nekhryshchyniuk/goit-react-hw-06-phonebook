@@ -8,7 +8,9 @@ import { useSelector } from 'react-redux';
 
 const ContactList = () => {
   const dispatch = useDispatch();
-  const loweredFilter = useSelector(state => state.filter).toLowerCase();
+  const filterValue = useSelector(state => state.filter);
+  console.log(filterValue);
+  const loweredFilter = filterValue.toLowerCase();
   const contactList = useSelector(state => state.contact);
 
   const filteredList = contactList.filter(({ name }) =>
