@@ -1,30 +1,35 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Form } from './Form.styled';
-import { Button } from '../Button.styled';
-import { Input } from '../Input.styled';
-import { Label } from './Label.styled';
-import { BsFillTelephonePlusFill } from 'react-icons/bs';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsSlice';
+import {
+  default as PropTypes,
+  Form,
+  Button,
+  Input,
+  Label,
+  BsFillTelephonePlusFill,
+  useState,
+  useDispatch,
+  useSelector,
+  addContact,
+} from '../../components';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contact);
 
   const inputChange = ({ target }) => {
     if (target.name === 'name') return setName(target.value);
     setNumber(target.value);
   };
-  const dispatch = useDispatch();
 
   return (
     <Form
       color="#ffee7d"
       onSubmit={e => {
         e.preventDefault();
-        dispatch(addContact({ name, number }));
+        contacts.find(obj => obj.name === name)
+          ? alert(`${name} is already in contacts`)
+          : dispatch(addContact({ name, number }));
         setName('');
         setNumber('');
       }}
@@ -63,4 +68,5 @@ const ContactForm = () => {
 ContactForm.propTypes = {
   addContact: PropTypes.func,
 };
-export default ContactForm;
+
+export { ContactForm as default };

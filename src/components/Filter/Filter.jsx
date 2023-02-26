@@ -1,8 +1,10 @@
-import PropTypes from 'prop-types';
-import { Input } from '../Input.styled';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import { setFilterValue } from '../../redux/filterSlice';
+import {
+  default as PropTypes,
+  Input,
+  useDispatch,
+  useSelector,
+  setFilterValue,
+} from '../../components';
 
 const Filter = () => {
   const dispatch = useDispatch();

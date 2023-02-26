@@ -1,15 +1,19 @@
-import PropTypes from 'prop-types';
-import { Button } from '../Button.styled';
-import { List, ListItem } from './List.styled';
-import { RiContactsLine, RiDeleteBin6Line } from 'react-icons/ri';
-import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsSlice';
-import { useSelector } from 'react-redux';
+import {
+  default as PropTypes,
+  Button,
+  List,
+  ListItem,
+  RiContactsLine,
+  RiDeleteBin6Line,
+  useDispatch,
+  deleteContact,
+  useSelector,
+} from '../../components';
 
 const ContactList = () => {
   const dispatch = useDispatch();
   const filterValue = useSelector(state => state.filter);
-  console.log(filterValue);
+
   const loweredFilter = filterValue.toLowerCase();
   const contactList = useSelector(state => state.contact);
 
